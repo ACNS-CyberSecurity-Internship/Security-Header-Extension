@@ -1,0 +1,49 @@
+
+body {
+  width: 300px;
+}
+
+.header {
+  width: 400px;
+  height: 50px;
+}
+
+.triangle {
+  float: left;
+  width: 15px;
+  height: auto;
+  margin: 14px;
+  padding: 0 5px 0 10px;
+}
+
+.title {
+  float: left;
+  width: 200px;
+}
+
+.image {
+  float: left;
+  width: 50px;
+  padding-top: 12px;
+}
+
+.button {
+  font-size: 12px;
+  transition-duration: 0.4s;
+  border: 2px solid green;
+  background-color: white; /* Green */
+  border-radius: 6px;
+  color: black;
+}
+
+.button:hover {
+  background-color: green;
+  color: white;
+}
+
+.dropDown {
+  padding-left: 30px;
+  padding-right: 30px;
+  max-height: 0;
+  overflow: hidden;
+}

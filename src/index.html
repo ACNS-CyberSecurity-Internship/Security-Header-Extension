@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Security-Header-Extension</title>
+</head>
+<body>
+<h1 align="center">Security Header Test</h1>
+
+<div align="center">
+    <button class="button" id="download">Download Results</button>
+    <button class="button" id="acns">Learn More</button>
+    <button class="button" id="settings">⚙</button>
+</div>
+<br>
+<div id="allHeaders">
+    <div class="header" id="strictTransport">
+        <div>
+            <img class="triangle" id="triangle0" src="images/index/triangle.png">
+        </div>
+        <div class="title">
+            <h3>Strict-Transport-Security</h3>
+        </div>
+        <div class="image">
+        </div>
+    </div>
+    <div class="dropDown" id="drop0">
+        <p>Used to ensure that the browser is using a secure connection.</p>
+        <p>CSU Recommendation: Required</p>
+    </div>
+
+    <div class="header" id="contentSecurity">
+        <div>
+            <img class="triangle" id="triangle1" src="images/index/triangle.png">
+        </div>
+        <div class="title">
+            <h3>Content-Security-Policy</h3>
+        </div>
+        <div class="image">
+        </div>
+    </div>
+    <div class="dropDown" id="drop1">
+        <p>Controls what scripts can be loaded on the page.</p>
+        <p>CSU Recommendation: Optional</p>
+    </div>
+
+    <div class="header" id="frameOptions">
+        <div>
+            <img class="triangle" id="triangle2" src="images/index/triangle.png">
+        </div>
+        <div class="title">
+            <h3>X-Frame-Options</h3>
+        </div>
+        <div class="image">
+        </div>
+    </div>
+    <div class="dropDown" id="drop2">
+        <p>Utilized to prevent UI Redressing attacks that stem from
+            clickjacking.</p>
+        <p>CSU Recommendation: Recommended</p>
+    </div>
+
+    <div class="header" id="xssProtection">
+        <div>
+            <img class="triangle" id="triangle3" src="images/index/triangle.png">
+        </div>
+        <div class="title">
+            <h3>X-XSS-Protection</h3>
+        </div>
+        <div class="image">
+        </div>
+    </div>
+    <div class="dropDown" id="drop3">
+        <p>Detects and prevents malicious HTML input.</p>
+        <p>CSU Recommendation: Recommended</p>
+    </div>
+
+    <div class="header" id="contentOptions">
+        <div>
+            <img class="triangle" id="triangle4" src="images/index/triangle.png">
+        </div>
+        <div class="title">
+            <h3>X-Content-Type-Options</h3>
+        </div>
+        <div class="image">
+        </div>
+    </div>
+    <div class="dropDown" id="drop4">
+        <p>A MIME-sniffing utility that informs the browser what to do with file types. </p>
+        <p>CSU Recommendation: Required</p>
+    </div>
+
+    <div class="header" id="downloadOptions">
+        <div>
+            <img class="triangle" id="triangle5" src="images/index/triangle.png">
+        </div>
+        <div class="title">
+            <h3>X-Download-Options</h3>
+        </div>
+        <div class="image">
+        </div>
+    </div>
+    <div class="dropDown" id="drop5">
+        <p>Prevents html files from running and forces
+            manual download.</p>
+        <p>CSU Recommendation: Optional</p>
+    </div>
+
+    <div class="header" id="referrerPolicy">
+        <div>
+            <img class="triangle" id="triangle6" src="images/index/triangle.png">
+        </div>
+        <div class="title">
+            <h3>Referrer-Policy</h3>
+        </div>
+        <div class="image">
+        </div>
+    </div>
+    <div class="dropDown" id="drop6">
+        <p>Allows users to track where they came from.</p>
+        <p>CSU Recommendation: Optional</p>
+    </div>
+
+    <div class="header" id="featurePolicy">
+        <div>
+            <img class="triangle" id="triangle7" src="images/index/triangle.png">
+        </div>
+        <div class="title">
+            <h3>Feature-Policy</h3>
+        </div>
+        <div class="image">
+        </div>
+    </div>
+    <div class="dropDown" id="drop7">
+        <p>Used to enable or disable certain features on the browser.</p>
+        <p>CSU Recommendation: Optional</p>
+    </div>
+
+    <div class="header" id="publicKeyPins">
+        <div>
+            <img class="triangle" id="triangle8" src="images/index/triangle.png">
+        </div>
+        <div class="title">
+            <h3>Public-Key-Pins</h3>
+        </div>
+        <div class="image">
+        </div>
+    </div>
+    <div class="dropDown" id="drop8">
+        <p>Allows websites to resist fraudulent digital certificates.</p>
+        <p>CSU Recommendation: Optional</p>
+    </div>
+</div>
+</body>
+</html>
