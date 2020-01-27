@@ -4,11 +4,6 @@ window.addEventListener("DOMContentLoaded", main);
 
 export function main()
 {
-	let url = "";
-	let numberOfSecurityHeaders = 9;
-	let data = new Array(numberOfSecurityHeaders);
-	let triangleInfo = new Array(numberOfSecurityHeaders);
-
 	if(window)
 	{
 		if(window.chrome && chrome.tabs)
@@ -17,57 +12,23 @@ export function main()
 
 				function(tabs)
 				{
-					url = tabs[0].url;
-					dataCollection(url, numberOfSecurityHeaders, data);
+					let url = tabs[0].url;
+					let numberOfSecurityHeaders = 9;
+					let data = dataCollection(url, numberOfSecurityHeaders);
 
 					if(document)
 					{
-						loadDocument(url, numberOfSecurityHeaders, data, triangleInfo);
+						loadDocument(url, numberOfSecurityHeaders, data, new Array(numberOfSecurityHeaders));
 					}
 				});
 		}
 	}
 }
 
-export function loadDocument(url, numberOfSecurityHeaders, data, triangleInfo)
+export function dataCollection(url, numberOfSecurityHeaders)
 {
-	let downLoadButton = document.getElementById("download");
-	let learnMoreButton = document.getElementById("acns");
-	let settingsButton = document.getElementById("settings");
+	let data = new Array(numberOfSecurityHeaders);
 
-	if(downLoadButton)
-	{
-		downLoadButton.addEventListener("click", () => downloadResults(url, data));
-	}
-
-	if(learnMoreButton)
-	{
-		learnMoreButton.addEventListener("click", learnMore);
-	}
-
-	if(settingsButton)
-	{
-		settingsButton.addEventListener("click", settings);
-	}
-
-	createAnimations(numberOfSecurityHeaders, data, triangleInfo);
-}
-
-
-export function createAnimations(numberOfSecurityHeaders, data, triangleInfo)
-{
-	for(let i = 0; i < numberOfSecurityHeaders; i++)
-	{
-		triangleInfo[i] = {};
-		triangleInfo[i].theta = 0;
-		triangleInfo[i].scroll = 0;
-		animateTriangles(triangleInfo, data, i);
-	}
-}
-
-
-export function dataCollection(url, numberOfSecurityHeaders, data)
-{
 	let get = new XMLHttpRequest();
 
 	get.onreadystatechange = function()
@@ -97,6 +58,24 @@ export function dataCollection(url, numberOfSecurityHeaders, data)
 	{
 		setLoading(numberOfSecurityHeaders);
 	}
+
+	return data;
+}
+
+export function setLoading(numberOfSecurityHeaders)
+{
+	let images = document.getElementsByClassName("image");
+
+	for(let i = 0; i < numberOfSecurityHeaders; i++)
+	{
+		let img = document.createElement("IMG");
+		img.setAttribute("id", ("img" + i));
+		img.setAttribute("class", "headerVisual");
+		img.src = "../images/index/loading.gif";
+		img.style.width = "25px";
+		img.style.padding = "0px 0px 5px 0px";
+		images[i].appendChild(img);
+	}
 }
 
 export function createDropDowns(data)
@@ -121,7 +100,6 @@ export function createDropDowns(data)
 	}
 }
 
-
 export function setImages(numberOfSecurityHeaders, data)
 {
 	for(let i = 0; i < numberOfSecurityHeaders; i++)
@@ -143,7 +121,7 @@ export function setImages(numberOfSecurityHeaders, data)
 	}
 }
 
-// Stores data on local Python server. This function will only succeed on the CSU network.
+// Sends data to local server. This function will only succeed on the CSU network.
 
 export function sendData(url, data)
 {
@@ -166,23 +144,40 @@ export function sendData(url, data)
 	post.send(JSON.stringify(variables));
 }
 
-
-export function setLoading(numberOfSecurityHeaders)
+export function loadDocument(url, numberOfSecurityHeaders, data, triangleInfo)
 {
-	let images = document.getElementsByClassName("image");
+	let downLoadButton = document.getElementById("download");
+	let learnMoreButton = document.getElementById("acns");
+	let settingsButton = document.getElementById("settings");
 
-	for(let i = 0; i < numberOfSecurityHeaders; i++)
+	if(downLoadButton)
 	{
-		let img = document.createElement("IMG");
-		img.setAttribute("id", ("img" + i));
-		img.setAttribute("class", "headerVisual");
-		img.src = "../images/index/loading.gif";
-		img.style.width = "25px";
-		img.style.padding = "0px 0px 5px 0px";
-		images[i].appendChild(img);
+		downLoadButton.addEventListener("click", () => downloadResults(url, data));
 	}
+
+	if(learnMoreButton)
+	{
+		learnMoreButton.addEventListener("click", learnMore);
+	}
+
+	if(settingsButton)
+	{
+		settingsButton.addEventListener("click", settings);
+	}
+
+	createAnimations(numberOfSecurityHeaders, data, triangleInfo);
 }
 
+export function createAnimations(numberOfSecurityHeaders, data, triangleInfo)
+{
+	for(let i = 0; i < numberOfSecurityHeaders; i++)
+	{
+		triangleInfo[i] = {};
+		triangleInfo[i].theta = 0;
+		triangleInfo[i].scroll = 0;
+		animateTriangles(triangleInfo, data, i);
+	}
+}
 
 export function animateTriangles(triangleInfo, data, i)
 {
@@ -224,42 +219,29 @@ export function doAnimation(triangleInfo, plusMinus, i, currentTriangle, dropDow
 		currentTriangle.style.transform = "rotate(" + triangleInfo[i].theta + "deg)";
 		dropDown.style.maxHeight = triangleInfo[i].scroll + "px";
 
+		let negativeFlipper = 1;
+		let angle = 0;
+
 		if(plusMinus)
 		{
-			if(triangleInfo[i].theta === 90)
-			{
-				clearInterval(id);
-			}
-
-			triangleInfo[i].theta += 1;
-			triangleInfo[i].scroll += numLinesNeeded;
+			negativeFlipper = -1;
+			angle = 90;
 		}
 
-		else
-		{
-			if(triangleInfo[i].theta === 0)
-			{
-				clearInterval(id);
-			}
-
-			triangleInfo[i].theta -= 1;
-			triangleInfo[i].scroll -= numLinesNeeded;
-		}
+		doAFrame(triangleInfo, i, numLinesNeeded, id, negativeFlipper, angle);
 	}
 }
 
-
-export function date()
+export function doAFrame(triangleInfo, i, numLinesNeeded, id, negativeFlipper, angle)
 {
-	let today = new Date();
-	let dd = String(today.getDate()).padStart(2, "0");
-	let mm = String(today.getMonth() + 1).padStart(2, "0");
-	let yyyy = today.getFullYear();
+	if(triangleInfo[i].theta === angle)
+	{
+		clearInterval(id);
+	}
 
-	today = mm + "/" + dd + "/" + yyyy;
-	return today;
+	triangleInfo[i].theta -= 1 * negativeFlipper;
+	triangleInfo[i].scroll -= numLinesNeeded * negativeFlipper;
 }
-
 
 export function downloadResults(url, data)
 {
@@ -295,6 +277,17 @@ export function downloadResults(url, data)
 
 	element.click();
 	document.body.removeChild(element);
+}
+
+export function date()
+{
+	let today = new Date();
+	let dd = String(today.getDate()).padStart(2, "0");
+	let mm = String(today.getMonth() + 1).padStart(2, "0");
+	let yyyy = today.getFullYear();
+
+	today = mm + "/" + dd + "/" + yyyy;
+	return today;
 }
 
 export function learnMore()
