@@ -1,8 +1,8 @@
 # Security Header Chrome Extension
 
-### A Chrome Extension Built to Check the Presence of Embedded Security Headers.
+A Chrome Extension Built to Check the Presence of Embedded Security Headers. Developed by the ACNS Cybersecurity Internship Web team using modern web tools.
 
-## Security Header's Checked
+## Security Headers Checked
 
 | Security Header           | Description |
 | ------------------------- | ----------- |
