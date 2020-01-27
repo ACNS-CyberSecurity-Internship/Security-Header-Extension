@@ -19,13 +19,13 @@ export function main()
 				{
 					url = tabs[0].url;
 					dataCollection(url, numberOfSecurityHeaders, data);
+
+					if(document)
+					{
+						loadDocument(url, numberOfSecurityHeaders, data, triangleInfo);
+					}
 				});
 		}
-	}
-
-	if(document)
-	{
-		loadDocument(url, numberOfSecurityHeaders, data, triangleInfo);
 	}
 }
 
