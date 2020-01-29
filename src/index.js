@@ -297,5 +297,5 @@ export function learnMore()
 
 export function settings()
 {
-	window.open("https://www.acns.colostate.edu/security/#1501169241566-a28bf810-517e");
+	window.open();
 }

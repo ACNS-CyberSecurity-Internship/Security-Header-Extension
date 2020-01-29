@@ -6,6 +6,7 @@
       <script value="build" />
     </scripts>
     <node-interpreter value="project" />
+    <package-manager value="$USER_HOME$/.nvm/versions/node/v12.14.1/lib/node_modules" />
     <envs />
     <method v="2" />
   </configuration>
