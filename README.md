@@ -37,8 +37,12 @@ primarily used for developers who want information at a glance.
 
 The extension can be found at [this]() link on the Chrome Web Store. 
 
-If you wish to contribute to this project, installation is simple. After cloning the repository, you can build the 
-extension by running the command
+If you wish to contribute to this project, installation is simple. After cloning the repository, install the neccessary 
+packages.
+
+`npm install`
+
+You can build the extension by running the command
 
 `npm run build`
 
