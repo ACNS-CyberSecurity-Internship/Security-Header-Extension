@@ -3,13 +3,9 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 
 module.exports = {
-    watch: false,
-    mode: 'development',
+    devtool: 'inline-source-map',
     entry: './src/index.js',
-    output: {
-        filename: 'index.js',
-        path: path.resolve(__dirname, 'dist')
-    },
+    mode: 'development',
     module: {
         rules: [
             {
@@ -23,11 +19,20 @@ module.exports = {
             }
         ]
     },
+    optimization: {
+        splitChunks: {
+            chunks: 'all',
+        },
+    },
+    output: {
+        filename: 'index.js',
+        path: path.resolve(__dirname, 'dist')
+    },
     plugins: [
         new CleanWebpackPlugin(),
         new HtmlWebpackPlugin({
             template: 'src/index.html'
         })
     ],
-    devtool: 'cheap-module-source-map'
+    watch: true
 };
