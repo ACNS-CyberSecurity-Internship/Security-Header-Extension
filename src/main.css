@@ -47,3 +47,7 @@ body {
   max-height: 0;
   overflow: hidden;
 }
+
+#settingsPage {
+  display: none;
+}
