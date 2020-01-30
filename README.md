@@ -37,8 +37,17 @@ primarily used for developers who want information at a glance.
 
 The extension can be found at [this]() link on the Chrome Web Store. 
 
-If you wish to contribute to this project, installation is simple. After cloning the repository, install the neccessary 
-packages.
+If you wish to contribute to this project, installation is simple. You will however need a few dependencies. This README
+ will assume that you are developing on Linux. 
+ 
+### Dependencies
+
+ - [Git]()
+ - [The Node Package Manager or NPM]()
+ - [Webpack]()
+ 
+ 
+After installing the above and cloning the repository, install the neccessary packages.
 
 `npm install`
 
@@ -47,13 +56,16 @@ You can build the extension by running the command
 `npm run build`
 
 in your terminal. If you use Webstorm for web development, configuration files have been provided for you. Simply click 
-the run button and the extension will build.
+the run button and the extension will build. 
 
 After a successful build, the extension files will exist in a new dist directory. In Chrome, navigate to 
 [your extensions directory](chrome://extensions/). Slide the developer switch in the top right of the screen if you 
 haven't already. Load the dist folder through the unpacked loader. The extension will load.
 
-After making changes, you will need to click the reload button on the extension to view your changes.
+Webpack is set to watch mode, which allows dynamic reloading of source 
+materials. If you edit the source files, Webpack will automatically rebundle the files into the dist directory for you. 
+In order to reload the extension following changes, you will still need to refresh the extension in Chrome by clicking 
+the refresh button in the menu.
 
 ## Issues and Pull Requests
 
