@@ -31,7 +31,7 @@ module.exports = {
     },
     plugins: [
         new CopyPlugin([
-            { from: './manifest.json' },
+            { from: './manifest.json', to: './' },
             { from: './images', to: './images' }
         ]),
         new CleanWebpackPlugin(),
