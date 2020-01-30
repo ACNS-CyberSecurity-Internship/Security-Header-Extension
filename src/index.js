@@ -299,7 +299,9 @@ export function settings()
 {
 	var x = document.getElementById("settingsPage");
 	var y = document.getElementById("allHeaders");
-	if (x.style.display === "none" && y.style.display === "block") {
+	console.log('y style: ' + y.style.display);
+	console.log('x style: ' + x.style.display);
+	if (x.style.display === "none" | x.style.display === "") {
 		x.style.display = "block";
 		y.style.display = "none";
 	} else {
