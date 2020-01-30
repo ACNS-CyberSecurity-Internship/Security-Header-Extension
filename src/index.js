@@ -297,5 +297,14 @@ export function learnMore()
 
 export function settings()
 {
-	window.open();
+	var x = document.getElementById("settingsPage");
+	var y = document.getElementById("allHeaders");
+	if (x.style.display === "none" && y.style.display === "block") {
+		x.style.display = "block";
+		y.style.display = "none";
+	} else {
+		x.style.display = "none";
+		y.style.display = "block";
+	}
+
 }
