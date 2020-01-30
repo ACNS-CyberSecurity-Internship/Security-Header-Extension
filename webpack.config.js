@@ -30,11 +30,11 @@ module.exports = {
         path: path.resolve(__dirname, 'dist')
     },
     plugins: [
+        new CleanWebpackPlugin(),
         new CopyPlugin([
             { from: './manifest.json', to: './' },
             { from: './images', to: './images' }
-        ]),
-        new CleanWebpackPlugin(),
+        ], { copyUnmodified: true}),
         new HtmlWebpackPlugin({
             template: 'src/index.html'
         })
