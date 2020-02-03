@@ -26,10 +26,10 @@
     </div>
     <div class="dropDown" id="drop0">
         <p>Used to ensure that the browser is using a secure connection.</p>
-        <p>CSU Recommendation: Required</p>
+        <p class="csuRec">CSU Recommendation: Required</p>
     </div>
 
-    <div class="header" id="contentSecurity">
+    <div class="header optional" id="contentSecurity">
         <div>
             <img class="triangle" id="triangle1" src="images/index/triangle.png">
         </div>
@@ -39,9 +39,9 @@
         <div class="image">
         </div>
     </div>
-    <div class="dropDown" id="drop1">
+    <div class="dropDown optional" id="drop1">
         <p>Controls what scripts can be loaded on the page.</p>
-        <p>CSU Recommendation: Optional</p>
+        <p class="csuRec">CSU Recommendation: Optional</p>
     </div>
 
     <div class="header" id="frameOptions">
@@ -57,7 +57,7 @@
     <div class="dropDown" id="drop2">
         <p>Utilized to prevent UI Redressing attacks that stem from
             clickjacking.</p>
-        <p>CSU Recommendation: Recommended</p>
+        <p class="csuRec">CSU Recommendation: Recommended</p>
     </div>
 
     <div class="header" id="xssProtection">
@@ -72,7 +72,7 @@
     </div>
     <div class="dropDown" id="drop3">
         <p>Detects and prevents malicious HTML input.</p>
-        <p>CSU Recommendation: Recommended</p>
+        <p class="csuRec">CSU Recommendation: Recommended</p>
     </div>
 
     <div class="header" id="contentOptions">
@@ -87,10 +87,10 @@
     </div>
     <div class="dropDown" id="drop4">
         <p>A MIME-sniffing utility that informs the browser what to do with file types. </p>
-        <p>CSU Recommendation: Required</p>
+        <p class="csuRec">CSU Recommendation: Required</p>
     </div>
 
-    <div class="header" id="downloadOptions">
+    <div class="header optional" id="downloadOptions">
         <div>
             <img class="triangle" id="triangle5" src="images/index/triangle.png">
         </div>
@@ -100,13 +100,13 @@
         <div class="image">
         </div>
     </div>
-    <div class="dropDown" id="drop5">
+    <div class="dropDown optional" id="drop5">
         <p>Prevents html files from running and forces
             manual download.</p>
-        <p>CSU Recommendation: Optional</p>
+        <p class="csuRec">CSU Recommendation: Optional</p>
     </div>
 
-    <div class="header" id="referrerPolicy">
+    <div class="header optional" id="referrerPolicy">
         <div>
             <img class="triangle" id="triangle6" src="images/index/triangle.png">
         </div>
@@ -116,12 +116,12 @@
         <div class="image">
         </div>
     </div>
-    <div class="dropDown" id="drop6">
+    <div class="dropDown optional" id="drop6">
         <p>Allows users to track where they came from.</p>
-        <p>CSU Recommendation: Optional</p>
+        <p class="csuRec">CSU Recommendation: Optional</p>
     </div>
 
-    <div class="header" id="featurePolicy">
+    <div class="header optional" id="featurePolicy">
         <div>
             <img class="triangle" id="triangle7" src="images/index/triangle.png">
         </div>
@@ -131,12 +131,12 @@
         <div class="image">
         </div>
     </div>
-    <div class="dropDown" id="drop7">
+    <div class="dropDown optional" id="drop7">
         <p>Used to enable or disable certain features on the browser.</p>
-        <p>CSU Recommendation: Optional</p>
+        <p class="csuRec">CSU Recommendation: Optional</p>
     </div>
 
-    <div class="header" id="publicKeyPins">
+    <div class="header optional" id="publicKeyPins">
         <div>
             <img class="triangle" id="triangle8" src="images/index/triangle.png">
         </div>
@@ -146,9 +146,9 @@
         <div class="image">
         </div>
     </div>
-    <div class="dropDown" id="drop8">
+    <div class="dropDown optional" id="drop8">
         <p>Allows websites to resist fraudulent digital certificates.</p>
-        <p>CSU Recommendation: Optional</p>
+        <p class="csuRec">CSU Recommendation: Optional</p>
     </div>
 </div>
 <div id="settingsPage">
@@ -159,12 +159,10 @@
         <div class="title">
             <h3>CSU Recommendations</h3>
         </div>
-        <div class="image">
-        </div>
     </div>
-    <div class="dropDown" id="drop9">
-        <p>Show</p>
-        <p>Show CSU Optional Headers</p>
+    <div class="settingsDropDown" id="drop9">
+        <input type="checkbox" id="showRec"> Show <br>
+        <input type="checkbox" id="showRecOpt" checked> Show CSU Optional Headers <br>
     </div>
 </div>
 

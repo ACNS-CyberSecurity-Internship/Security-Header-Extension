@@ -14,11 +14,13 @@ export function main()
 				{
 					let url = tabs[0].url;
 					let numberOfSecurityHeaders = 9;
+					let numberOfSettingsDropDowns = 1;
 					let data = dataCollection(url, numberOfSecurityHeaders);
 
 					if(document)
 					{
-						loadDocument(url, numberOfSecurityHeaders, data, new Array(numberOfSecurityHeaders));
+						let numberOfTriangles = numberOfSecurityHeaders + numberOfSettingsDropDowns;
+						loadDocument(url, numberOfTriangles, data, new Array(numberOfTriangles));
 					}
 				});
 		}
@@ -149,6 +151,9 @@ export function loadDocument(url, numberOfSecurityHeaders, data, triangleInfo)
 	let downLoadButton = document.getElementById("download");
 	let learnMoreButton = document.getElementById("acns");
 	let settingsButton = document.getElementById("settings");
+	let showRecButton = document.getElementById("showRec");
+	let showRecOptButton = document.getElementById("showRecOpt");
+
 
 	if(downLoadButton)
 	{
@@ -163,6 +168,16 @@ export function loadDocument(url, numberOfSecurityHeaders, data, triangleInfo)
 	if(settingsButton)
 	{
 		settingsButton.addEventListener("click", settings);
+	}
+
+	if(showRecButton)
+	{
+		showRecButton.addEventListener("click", showRecommended);
+	}
+
+	if(showRecOptButton)
+	{
+		showRecOptButton.addEventListener("click", setOptional);
 	}
 
 	createAnimations(numberOfSecurityHeaders, data, triangleInfo);
@@ -191,7 +206,7 @@ export function animateTriangles(triangleInfo, data, i)
 			let dropDown = document.getElementById("drop" + i);
 			let numLinesNeeded = 1.25;
 
-			if(data[i] != null)
+			if(i < data.length && data[i] != null)
 			{
 				numLinesNeeded += data[i].length / 200;
 			}
@@ -297,14 +312,55 @@ export function learnMore()
 
 export function settings()
 {
-	var x = document.getElementById("settingsPage");
-	var y = document.getElementById("allHeaders");
-	if (x.style.display === "none" && y.style.display === "block") {
-		x.style.display = "block";
-		y.style.display = "none";
-	} else {
-		x.style.display = "none";
-		y.style.display = "block";
+	let settingsPage = document.getElementById("settingsPage");
+	let mainPage = document.getElementById("allHeaders");
+
+	if(!settingsPage.style.display || settingsPage.style.display === "none")
+	{
+		settingsPage.style.display = "block";
+		mainPage.style.display = "none";
 	}
 
+	else
+	{
+		settingsPage.style.display = "none";
+		mainPage.style.display = "block";
+	}
+}
+
+export function showRecommended()
+{
+	let checkBox = document.getElementById("showRec");
+	let csuRecommendations = document.getElementsByClassName("csuRec");
+
+	setDisplayBasedOnChecked(checkBox, csuRecommendations);
+}
+
+export function setOptional()
+{
+	let checkBox = document.getElementById("showRecOpt");
+	let csuOptionalRecommendations = document.getElementsByClassName("optional");
+
+	setDisplayBasedOnChecked(checkBox, csuOptionalRecommendations);
+}
+
+export function setDisplayBasedOnChecked(checkBox, items)
+{
+	if (checkBox.checked)
+	{
+		setDisplay(items, "block");
+	}
+
+	else
+	{
+		setDisplay(items, "none");
+	}
+}
+
+export function setDisplay(items, displayType)
+{
+	for(let i = 0; i < items.length; i++)
+	{
+		items[i].style.display = displayType;
+	}
 }

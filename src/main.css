@@ -48,6 +48,17 @@ body {
   overflow: hidden;
 }
 
+.settingsDropDown {
+  padding-left: 30px;
+  padding-right: 30px;
+  max-height: 0;
+  overflow: hidden;
+}
+
+.csuRec {
+  display: none;
+}
+
 #settingsPage {
   display: none;
 }
