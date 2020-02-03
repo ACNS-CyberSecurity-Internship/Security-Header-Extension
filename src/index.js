@@ -1,4 +1,4 @@
-import css from "./main.css";
+import css from "./main.scss";
 
 window.addEventListener("DOMContentLoaded", main);
 
