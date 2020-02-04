@@ -333,15 +333,7 @@ export function showRecommended()
 	let checkBox = document.getElementById("showRec");
 	let csuRecommendations = document.getElementsByClassName("csuRec");
 
-	if (checkBox.checked)
-	{
-		setDisplay(csuRecommendations, "block");
-	}
-
-	else
-	{
-		setDisplay(csuRecommendations, "block");
-	}
+	setDisplayBasedOnChecked(checkBox, csuRecommendations);
 }
 
 export function setOptional()
@@ -349,14 +341,19 @@ export function setOptional()
 	let checkBox = document.getElementById("showRecOpt");
 	let csuOptionalRecommendations = document.getElementsByClassName("optional");
 
+	setDisplayBasedOnChecked(checkBox, csuOptionalRecommendations);
+}
+
+export function setDisplayBasedOnChecked(checkBox, items)
+{
 	if (checkBox.checked)
 	{
-		setDisplay(csuOptionalRecommendations, "block");
+		setDisplay(items, "block");
 	}
 
 	else
 	{
-		setDisplay(csuOptionalRecommendations, "none");
+		setDisplay(items, "none");
 	}
 }
 
