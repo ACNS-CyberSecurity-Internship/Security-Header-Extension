@@ -45,9 +45,7 @@ If you wish to contribute to this project, installation is simple. You will howe
  - [The Node Package Manager or NPM]()
  - [Webpack]()
  
-After installing the above and cloning the repository, install the neccessary packages.
-
-`npm install`
+After installing the above and cloning the repository, install the neccessary packages. `npm install`
 
 ### Building for Development
 
