@@ -14,7 +14,7 @@ export function main()
 				{
 					let url = tabs[0].url;
 					let numberOfSecurityHeaders = 9;
-					let numberOfSettingsDropDowns = 1;
+					let numberOfSettingsDropDowns = 2;
 					let data = dataCollection(url, numberOfSecurityHeaders);
 
 					if(document)
@@ -153,7 +153,7 @@ export function loadDocument(url, numberOfSecurityHeaders, data, triangleInfo)
 	let settingsButton = document.getElementById("settings");
 	let showRecButton = document.getElementById("showRec");
 	let showRecOptButton = document.getElementById("showRecOpt");
-
+    let validateButton = document.getElementById("showRecOpt");
 
 	if(downLoadButton)
 	{
