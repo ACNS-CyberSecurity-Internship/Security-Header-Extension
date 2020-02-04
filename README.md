@@ -3,7 +3,7 @@
 A Chrome Extension Built to Check the Presence of Embedded Security Headers. Developed by the ACNS Cybersecurity 
 Internship Web team using modern web tools.
 
-The extension can be found at [this]() link on the Chrome Web Store. 
+The extension can be found at [this](https://chrome.google.com/webstore/detail/security-header-extension/nggplilppojikmgpmlecpcikpoiffinp) link on the Chrome Web Store. 
 
 ## Security Headers Checked
 
@@ -29,21 +29,21 @@ primarily used for developers who want information at a glance.
 ## Tech / Framework Used
 
 - [HTML](https://en.wikipedia.org/wiki/HTML) / [CSS](https://en.wikipedia.org/wiki/Cascading_Style_Sheets)
-- [Node.js](https://www.javascript.com) / [Webpack](https://www.javascript.com) / [Mocha](https://www.javascript.com)
+- [Node.js](https://nodejs.org/en/) / [Webpack](https://webpack.js.org/) / [Mocha](https://mochajs.org/)
 - [Google Chrome Extensions](http://www.chromeextensions.org)
 
 ## Installation
 
-The extension can be found at [this]() link on the Chrome Web Store. 
+The extension can be found at [this](https://chrome.google.com/webstore/detail/security-header-extension/nggplilppojikmgpmlecpcikpoiffinp) link on the Chrome Web Store. 
 
 If you wish to contribute to this project, installation is simple. You will however need a few dependencies. This README
  will assume that you are developing on Linux. 
  
 ### Dependencies
 
- - [Git]()
- - [The Node Package Manager or NPM]()
- - [Webpack]()
+ - [Git](https://git-scm.com/)
+ - [The Node Package Manager or NPM](https://www.npmjs.com/)
+ - [Webpack](https://webpack.js.org/)
  
 After installing the above and cloning the repository, install the neccessary packages. `npm install`
 
