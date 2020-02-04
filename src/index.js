@@ -155,30 +155,12 @@ export function loadDocument(url, numberOfSecurityHeaders, data, triangleInfo)
 	let showRecOptButton = document.getElementById("showRecOpt");
     let validateButton = document.getElementById("showRecOpt");
 
-	if(downLoadButton)
-	{
-		downLoadButton.addEventListener("click", () => downloadResults(url, data));
-	}
-
-	if(learnMoreButton)
-	{
-		learnMoreButton.addEventListener("click", learnMore);
-	}
-
-	if(settingsButton)
-	{
-		settingsButton.addEventListener("click", settings);
-	}
-
-	if(showRecButton)
-	{
-		showRecButton.addEventListener("click", showRecommended);
-	}
-
-	if(showRecOptButton)
-	{
-		showRecOptButton.addEventListener("click", setOptional);
-	}
+	if(downLoadButton) downLoadButton.addEventListener("click", () => downloadResults(url, data));
+	if(learnMoreButton)learnMoreButton.addEventListener("click", learnMore);
+	if(settingsButton)settingsButton.addEventListener("click", settings);
+	if(showRecButton)showRecButton.addEventListener("click", showRecommended);
+	if(showRecOptButton)showRecOptButton.addEventListener("click", setOptional);
+	if(validateButton)showRecOptButton.addEventListener("click", validate);
 
 	createAnimations(numberOfSecurityHeaders, data, triangleInfo);
 }
@@ -363,4 +345,9 @@ export function setDisplay(items, displayType)
 	{
 		items[i].style.display = displayType;
 	}
+}
+
+export function validate()
+{
+
 }
