@@ -6,7 +6,6 @@ const CopyPlugin = require('copy-webpack-plugin');
 module.exports = {
     devtool: 'inline-source-map',
     entry: './src/index.js',
-    mode: 'development',
     module: {
         rules: [
             {
@@ -39,5 +38,4 @@ module.exports = {
             template: 'src/index.html'
         })
     ],
-    watch: true
 };

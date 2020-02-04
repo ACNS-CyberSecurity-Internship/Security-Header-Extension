@@ -19,7 +19,6 @@ The extension can be found at [this]() link on the Chrome Web Store.
 | X-Download-Options        | Prevents html files running as a part of the site and forces users to download them and open them manually. |
 | Public-Key-Pins           | Allows HTTPS websites to resist impersonation by attackers using mis-issued or otherwise fraudulent digital certificates. |
 
-# About The Project
 
 ## Motivation
 
@@ -46,28 +45,27 @@ If you wish to contribute to this project, installation is simple. You will howe
  - [The Node Package Manager or NPM]()
  - [Webpack]()
  
- 
-After installing the above and cloning the repository, install the neccessary packages.
+After installing the above and cloning the repository, install the neccessary packages. `npm install`
 
-`npm install`
+### Building for Development
 
-You can build the extension by running the command
+You can build the extension build in development mode by running the command `npm run dev` in your terminal. If you use Webstorm for web development, configuration files have been provided for you. Simply click 
+the run button and the extension will build. The development mode is ideal if you intend to make modifications to the 
+source files. Webpack is set to watch mode, which allows dynamic reloading of source materials. If you edit the source 
+files, Webpack will automatically rebundle the files into the dist directory for you. In order to reload the extension 
+following changes, you will still need to refresh the extension in Chrome by clicking the refresh button in the menu.
 
-`npm run build`
+### Building for Production
 
-in your terminal. If you use Webstorm for web development, configuration files have been provided for you. Simply click 
-the run button and the extension will build. 
+You can build the extension for production by running the command `npm run prod` in your terminal.
+
+### Loading the Extension into Chrome
 
 After a successful build, the extension files will exist in a new dist directory. In Chrome, navigate to 
 [your extensions directory](chrome://extensions/). Slide the developer switch in the top right of the screen if you 
 haven't already. Load the dist folder through the unpacked loader. The extension will load.
 
-Webpack is set to watch mode, which allows dynamic reloading of source 
-materials. If you edit the source files, Webpack will automatically rebundle the files into the dist directory for you. 
-In order to reload the extension following changes, you will still need to refresh the extension in Chrome by clicking 
-the refresh button in the menu.
-
-## Issues and Pull Requests
+## Contributing to the Project
 
 Feel free to submit issues and pull requests as you feel fit to the project. We will do our best to respond to the 
 contributions in a timely manner. Adding labels to issues helps our team organize and prioritize issues, and therefore 
