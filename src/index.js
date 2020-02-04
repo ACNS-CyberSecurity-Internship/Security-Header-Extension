@@ -1,4 +1,4 @@
-import css from "./main.css";
+import css from "./main.scss";
 
 window.addEventListener("DOMContentLoaded", main);
 
@@ -14,7 +14,7 @@ export function main()
 				{
 					let url = tabs[0].url;
 					let numberOfSecurityHeaders = 9;
-					let numberOfSettingsDropDowns = 1;
+					let numberOfSettingsDropDowns = 2;
 					let data = dataCollection(url, numberOfSecurityHeaders);
 
 					if(document)
@@ -153,32 +153,14 @@ export function loadDocument(url, numberOfSecurityHeaders, data, triangleInfo)
 	let settingsButton = document.getElementById("settings");
 	let showRecButton = document.getElementById("showRec");
 	let showRecOptButton = document.getElementById("showRecOpt");
+    let validateButton = document.getElementById("showRecOpt");
 
-
-	if(downLoadButton)
-	{
-		downLoadButton.addEventListener("click", () => downloadResults(url, data));
-	}
-
-	if(learnMoreButton)
-	{
-		learnMoreButton.addEventListener("click", learnMore);
-	}
-
-	if(settingsButton)
-	{
-		settingsButton.addEventListener("click", settings);
-	}
-
-	if(showRecButton)
-	{
-		showRecButton.addEventListener("click", showRecommended);
-	}
-
-	if(showRecOptButton)
-	{
-		showRecOptButton.addEventListener("click", setOptional);
-	}
+	if(downLoadButton) downLoadButton.addEventListener("click", () => downloadResults(url, data));
+	if(learnMoreButton)learnMoreButton.addEventListener("click", learnMore);
+	if(settingsButton)settingsButton.addEventListener("click", settings);
+	if(showRecButton)showRecButton.addEventListener("click", showRecommended);
+	if(showRecOptButton)showRecOptButton.addEventListener("click", setOptional);
+	if(validateButton)showRecOptButton.addEventListener("click", validate);
 
 	createAnimations(numberOfSecurityHeaders, data, triangleInfo);
 }
@@ -363,4 +345,9 @@ export function setDisplay(items, displayType)
 	{
 		items[i].style.display = displayType;
 	}
+}
+
+export function validate()
+{
+
 }
