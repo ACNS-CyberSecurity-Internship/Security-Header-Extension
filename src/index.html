@@ -27,6 +27,7 @@
     <div class="dropDown" id="drop0">
         <p>Used to ensure that the browser is using a secure connection.</p>
         <p class="csuRec">CSU Recommendation: Required</p>
+        <p class="validate">Optimal Header = max-age=31536000; includeSubDomains; preload</p>
     </div>
 
     <div class="header optional" id="contentSecurity">
@@ -42,6 +43,7 @@
     <div class="dropDown optional" id="drop1">
         <p>Controls what scripts can be loaded on the page.</p>
         <p class="csuRec">CSU Recommendation: Optional</p>
+        <p class="validate">Optimal Header = default-src ‘self’; script-src *; font-src *; style-src *</p>
     </div>
 
     <div class="header" id="frameOptions">
@@ -58,6 +60,7 @@
         <p>Utilized to prevent UI Redressing attacks that stem from
             clickjacking.</p>
         <p class="csuRec">CSU Recommendation: Recommended</p>
+        <p class="validate">Optimal Header = SAMEORIGIN</p>
     </div>
 
     <div class="header" id="xssProtection">
@@ -73,6 +76,7 @@
     <div class="dropDown" id="drop3">
         <p>Detects and prevents malicious HTML input.</p>
         <p class="csuRec">CSU Recommendation: Recommended</p>
+        <p class="validate">Optimal Header = 1; mode=block</p>
     </div>
 
     <div class="header" id="contentOptions">
@@ -88,6 +92,7 @@
     <div class="dropDown" id="drop4">
         <p>A MIME-sniffing utility that informs the browser what to do with file types. </p>
         <p class="csuRec">CSU Recommendation: Required</p>
+        <p class="validate">Optimal Header = nosniff</p>
     </div>
 
     <div class="header optional" id="downloadOptions">
@@ -104,6 +109,7 @@
         <p>Prevents html files from running and forces
             manual download.</p>
         <p class="csuRec">CSU Recommendation: Optional</p>
+        <p class="validate">Optimal Header = noopen</p>
     </div>
 
     <div class="header optional" id="referrerPolicy">
@@ -119,6 +125,7 @@
     <div class="dropDown optional" id="drop6">
         <p>Allows users to track where they came from.</p>
         <p class="csuRec">CSU Recommendation: Optional</p>
+        <p class="validate">Optimal Header = strict-origin-when-cross-origin</p>
     </div>
 
     <div class="header optional" id="featurePolicy">
@@ -134,6 +141,7 @@
     <div class="dropDown optional" id="drop7">
         <p>Used to enable or disable certain features on the browser.</p>
         <p class="csuRec">CSU Recommendation: Optional</p>
+        <p class="validate">Optimal Header = microphone‘none’; payment‘none’; sync-xhr ‘self</p>
     </div>
 
     <div class="header optional" id="publicKeyPins">
@@ -149,6 +157,8 @@
     <div class="dropDown optional" id="drop8">
         <p>Allows websites to resist fraudulent digital certificates.</p>
         <p class="csuRec">CSU Recommendation: Optional</p>
+        <p class="validate">Optimal Header = pin-sha256="d6qzRu9zOECb90Uez27xWltNsj0e1Md7GkYYkVoZWmM="; pin-sha256="E9CZ9INDbd+2eRQozYqqbQ2yXLVKB9+xcprMF+44U1g="; report-uri="http://example.com/pkp-report"; max-age=10000; includeSubDomains</p>
+        <p class="Validate">This header is extremely customizable, so the optimal header example can change significantly. </p>
     </div>
 </div>
 <div id="settingsPage">
