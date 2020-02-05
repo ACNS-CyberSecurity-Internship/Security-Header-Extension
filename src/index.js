@@ -185,6 +185,11 @@ export function animateTriangles(triangleInfo, data, i)
 	{
 		currentTriangle.addEventListener("click", function()
 		{
+			if(triangleInfo[i].theta !== 0 && triangleInfo[i].theta !== 90)
+			{
+				return;
+			}
+
 			let dropDown = document.getElementById("drop" + i);
 			let numLinesNeeded = 2;
 
@@ -197,6 +202,7 @@ export function animateTriangles(triangleInfo, data, i)
 			{
 				doAnimation(triangleInfo, false, i, currentTriangle, dropDown, numLinesNeeded);
 			}
+
 			else
 			{
 				doAnimation(triangleInfo, true, i, currentTriangle, dropDown, numLinesNeeded);
@@ -234,6 +240,7 @@ export function doAFrame(triangleInfo, i, numLinesNeeded, id, negativeFlipper, a
 	if(triangleInfo[i].theta === angle)
 	{
 		clearInterval(id);
+		return;
 	}
 
 	triangleInfo[i].theta -= 1 * negativeFlipper;
