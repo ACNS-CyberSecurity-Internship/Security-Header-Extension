@@ -157,16 +157,40 @@ export function loadDocument(url, numberOfSecurityHeaders, data, triangleInfo)
 
 	if(downLoadButton)
 	{
+		downLoadButton.addEventListener("mouseover", function(){
+			let icon = document.getElementById("downloadIcon");
+			icon.src = "../images/index/download-folder.gif";
+		});
+		downLoadButton.addEventListener("mouseout", function(){
+			let icon = document.getElementById("downloadIcon");
+			icon.src = "../images/index/download-folder.png";
+		});
 		downLoadButton.addEventListener("click", () => downloadResults(url, data));
 	}
 
 	if(learnMoreButton)
 	{
+		learnMoreButton.addEventListener("mouseover", function(){
+			let icon = document.getElementById("lmIcon");
+			icon.src = "../images/index/circles-menu-3.gif";
+		});
+		learnMoreButton.addEventListener("mouseout", function(){
+			let icon = document.getElementById("lmIcon");
+			icon.src = "../images/index/circles-menu-3.png";
+		});
 		learnMoreButton.addEventListener("click", learnMore);
 	}
 
 	if(settingsButton)
 	{
+		settingsButton.addEventListener("mouseover", function(){
+			let icon = document.getElementById("settingsIcon");
+			icon.src = "../images/index/settings.gif";
+		});
+		settingsButton.addEventListener("mouseout", function(){
+			let icon = document.getElementById("settingsIcon");
+			icon.src = "../images/index/settings.png";
+		});
 		settingsButton.addEventListener("click", settings);
 	}
 
@@ -292,6 +316,8 @@ export function downloadResults(url, data)
 
 	element.click();
 	document.body.removeChild(element);
+
+
 }
 
 export function date()
