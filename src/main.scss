@@ -30,14 +30,14 @@ body {
 .button {
   font-size: 12px;
   transition-duration: 0.4s;
-  border: 2px solid green;
+  border: 2px solid whitesmoke;
   background-color: white; /* Green */
   border-radius: 6px;
   color: black;
 }
 
 .button:hover {
-  background-color: green;
+  background-color: whitesmoke;
   color: white;
 }
 
