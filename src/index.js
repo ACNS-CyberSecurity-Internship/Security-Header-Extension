@@ -153,14 +153,14 @@ export function loadDocument(url, numberOfSecurityHeaders, data, triangleInfo)
 	let settingsButton = document.getElementById("settings");
 	let showRecButton = document.getElementById("showRec");
 	let showRecOptButton = document.getElementById("showRecOpt");
-    let validateButton = document.getElementById("showRecOpt");
+    let validateButton = document.getElementById("showGoodVal");
 
 	if(downLoadButton) downLoadButton.addEventListener("click", () => downloadResults(url, data));
-	if(learnMoreButton)learnMoreButton.addEventListener("click", learnMore);
-	if(settingsButton)settingsButton.addEventListener("click", settings);
-	if(showRecButton)showRecButton.addEventListener("click", showRecommended);
-	if(showRecOptButton)showRecOptButton.addEventListener("click", setOptional);
-	if(validateButton)showRecOptButton.addEventListener("click", validate);
+	if(learnMoreButton) learnMoreButton.addEventListener("click", learnMore);
+	if(settingsButton) settingsButton.addEventListener("click", settings);
+	if(showRecButton) showRecButton.addEventListener("click", () => showRecommended(showRecButton));
+	if(showRecOptButton) showRecOptButton.addEventListener("click", () => setOptional(showRecOptButton));
+	if(validateButton) validateButton.addEventListener("click", () => validate(validateButton));
 
 	createAnimations(numberOfSecurityHeaders, data, triangleInfo);
 }
@@ -186,7 +186,7 @@ export function animateTriangles(triangleInfo, data, i)
 		currentTriangle.addEventListener("click", function()
 		{
 			let dropDown = document.getElementById("drop" + i);
-			let numLinesNeeded = 1.25;
+			let numLinesNeeded = 2;
 
 			if(i < data.length && data[i] != null)
 			{
@@ -296,42 +296,36 @@ export function settings()
 {
 	let settingsPage = document.getElementById("settingsPage");
 	let mainPage = document.getElementById("allHeaders");
+	let mainTitle = document.getElementById("mainTitle");
 
 	if(!settingsPage.style.display || settingsPage.style.display === "none")
 	{
 		settingsPage.style.display = "block";
 		mainPage.style.display = "none";
+		mainTitle.innerText = "Settings";
 	}
 
 	else
 	{
 		settingsPage.style.display = "none";
 		mainPage.style.display = "block";
+		mainTitle.innerText = "Security Header Test";
 	}
 }
 
-export function showRecommended()
+export function showRecommended(checkBox)
 {
-	let checkBox = document.getElementById("showRec");
-	let csuRecommendations = document.getElementsByClassName("csuRec");
-
-	setDisplayBasedOnChecked(checkBox, csuRecommendations);
+	setDisplayBasedOnChecked(checkBox, document.getElementsByClassName("csuRec"));
 }
 
-export function setOptional()
+export function setOptional(checkBox)
 {
-	let checkBox = document.getElementById("showRecOpt");
-	let csuOptionalRecommendations = document.getElementsByClassName("optional");
-
-	setDisplayBasedOnChecked(checkBox, csuOptionalRecommendations);
+	setDisplayBasedOnChecked(checkBox, document.getElementsByClassName("optional"));
 }
 
-export function validate()
+export function validate(checkBox)
 {
-	let checkBox = document.getElementById("showGoodVal");
-	let validHeaders = document.getElementsByClassName("validate");
-
-	setDisplayBasedOnChecked(checkBox, validHeaders);
+	setDisplayBasedOnChecked(checkBox, document.getElementsByClassName("validate"));
 }
 
 export function setDisplayBasedOnChecked(checkBox, items)
