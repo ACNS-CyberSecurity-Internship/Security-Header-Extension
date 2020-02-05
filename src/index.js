@@ -326,6 +326,14 @@ export function setOptional()
 	setDisplayBasedOnChecked(checkBox, csuOptionalRecommendations);
 }
 
+export function validate()
+{
+	let checkBox = document.getElementById("showGoodVal");
+	let validHeaders = document.getElementsByClassName("validate");
+
+	setDisplayBasedOnChecked(checkBox, validHeaders);
+}
+
 export function setDisplayBasedOnChecked(checkBox, items)
 {
 	if (checkBox.checked)
@@ -347,7 +355,3 @@ export function setDisplay(items, displayType)
 	}
 }
 
-export function validate()
-{
-
-}
