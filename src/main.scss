@@ -30,15 +30,26 @@ body {
 .button {
   font-size: 12px;
   transition-duration: 0.4s;
-  border: 2px solid whitesmoke;
   background-color: white; /* Green */
   border-radius: 6px;
   color: black;
+  margin-right: 8px;
+  margin-left: 8px;
 }
 
 .button:hover {
-  background-color: white;
+  background-color: whitesmoke;
   color: white;
+}
+
+.button:focus {
+  outline: none;
+}
+
+.buttonImage {
+  width: 18px;
+  height: 18px;
+  padding: 1px;
 }
 
 .dropDown {

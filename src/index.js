@@ -156,36 +156,30 @@ export function loadDocument(url, numberOfSecurityHeaders, data, triangleInfo)
     let validateButton = document.getElementById("showGoodVal");
 
 	if(downLoadButton){
-		downLoadButton.addEventListener("mouseover", function(){
-			let icon = document.getElementById("downloadIcon");
-			icon.src = "../images/index/download-folder.gif";
-		});
-		downLoadButton.addEventListener("mouseout", function(){
-			let icon = document.getElementById("downloadIcon");
-			icon.src = "../images/index/download-folder.png";
-		});
+		downLoadButton.addEventListener("mouseover", () =>
+			document.getElementById("downloadIcon").src = "../images/index/download-folder.gif"
+		);
+		downLoadButton.addEventListener("mouseout", () =>
+			document.getElementById("downloadIcon").src = "../images/index/download-folder.png"
+		);
 		downLoadButton.addEventListener("click", () => downloadResults(url, data));
 	}
 	if(learnMoreButton){
-		learnMoreButton.addEventListener("mouseover", function(){
-			let icon = document.getElementById("lmIcon");
-			icon.src = "../images/index/circles-menu-3.gif";
-		});
-		learnMoreButton.addEventListener("mouseout", function(){
-			let icon = document.getElementById("lmIcon");
-			icon.src = "../images/index/circles-menu-3.png";
-		});
+		learnMoreButton.addEventListener("mouseover", () =>
+			document.getElementById("lmIcon").src = "../images/index/circles-menu-3.gif"
+		);
+		learnMoreButton.addEventListener("mouseout", () =>
+			document.getElementById("lmIcon").src = "../images/index/circles-menu-3.png"
+		);
 		learnMoreButton.addEventListener("click", learnMore);
 	}
 	if(settingsButton) {
-		settingsButton.addEventListener("mouseover", function(){
-			let icon = document.getElementById("settingsIcon");
-			icon.src = "../images/index/settings.gif";
-		});
-		settingsButton.addEventListener("mouseout", function(){
-			let icon = document.getElementById("settingsIcon");
-			icon.src = "../images/index/settings.png";
-		});
+		settingsButton.addEventListener("mouseover", () =>
+			document.getElementById("settingsIcon").src = "../images/index/settings.gif"
+		);
+		settingsButton.addEventListener("mouseout", () =>
+			document.getElementById("settingsIcon").src = "../images/index/settings.png"
+		);
 		settingsButton.addEventListener("click", settings);
 	}
 	if(showRecButton) showRecButton.addEventListener("click", () => showRecommended(showRecButton));
