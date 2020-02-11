@@ -95,13 +95,13 @@ export function createDropDowns(data)
 		im.setAttribute("class", "icon")
 		if(data[i] == null)
 		{
-			par.innerHTML = "Your Results: " + "Not Found";
+			par.innerHTML = "<b> Your Results: </b>" + "Not Found" ;
 			im.setAttribute("src", "../images/index/WarningShield.png");
 		}
 
 		else
 		{
-			par.innerHTML = "Your Results: " + data[i];
+			par.innerHTML = "<b> Your Results: </b>" + data[i];
 			im.setAttribute("src", "../images/index/NotWarningShield.png");
 		}
 		drops[i].appendChild(div);
