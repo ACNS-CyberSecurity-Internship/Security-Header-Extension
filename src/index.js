@@ -86,19 +86,28 @@ export function createDropDowns(data)
 
 	for(let i = 0; i < drops.length; i++)
 	{
+		let div = document.createElement("div");
 		let par = document.createElement("P");
-
+		let im = document.createElement("img");
+		im.setAttribute("align", "left")
+		im.setAttribute("width", "23px")
+		im.setAttribute("height", "23px")
+		im.setAttribute("class", "icon")
 		if(data[i] == null)
 		{
-			par.innerHTML = "Your Results: " + "Not Found";
+			par.innerHTML = "<b> Your Results: </b>" + "Not Found" ;
+			im.setAttribute("src", "../images/index/WarningShield.png");
 		}
 
 		else
 		{
-			par.innerHTML = "Your Results: " + data[i];
+			par.innerHTML = "<b> Your Results: </b>" + data[i];
+			im.setAttribute("src", "../images/index/NotWarningShield.png");
 		}
+		drops[i].appendChild(div);
+		div.appendChild(im);
+		div.appendChild(par);
 
-		drops[i].appendChild(par);
 	}
 }
 
