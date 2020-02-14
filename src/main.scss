@@ -30,16 +30,16 @@ body {
 .button {
   font-size: 12px;
   transition-duration: 0.4s;
-  background-color: white; /* Green */
+  background-color: #ffffffff; /* Green */
   border-radius: 6px;
-  color: black;
+  color: #000000;
   margin-right: 8px;
   margin-left: 8px;
 }
 
 .button:hover {
-  background-color: whitesmoke;
-  color: white;
+  background-color: #F5F5F5;
+  color: #ffffffff;
 }
 
 .button:focus {
@@ -105,12 +105,12 @@ body {
   left: 0;
   height: 15px;
   width: 15px;
-  background-color: #eee;
+  background-color: #eeeeee;
 }
 
 /* On mouse-over, add a grey background color */
 .container:hover input ~ .checkmark {
-  background-color: #ccc;
+  background-color: #cccccc;
 }
 
 /* When the checkbox is checked, add a blue background */

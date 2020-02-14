@@ -2,6 +2,9 @@ import css from "./main.scss";
 
 window.addEventListener("DOMContentLoaded", main);
 
+let mode = 0;
+mode = localStorage.getItem("modeVal");
+
 export function main()
 {
 	if(window)
@@ -14,7 +17,7 @@ export function main()
 				{
 					let url = tabs[0].url;
 					let numberOfSecurityHeaders = 9;
-					let numberOfSettingsDropDowns = 2;
+					let numberOfSettingsDropDowns = 3;
 					let data = dataCollection(url, numberOfSecurityHeaders);
 
 					if(document)
@@ -89,20 +92,35 @@ export function createDropDowns(data)
 		let div = document.createElement("div");
 		let par = document.createElement("P");
 		let im = document.createElement("img");
-		im.setAttribute("align", "left")
-		im.setAttribute("width", "23px")
-		im.setAttribute("height", "23px")
-		im.setAttribute("class", "icon")
+		im.setAttribute("align", "left");
+		im.setAttribute("width", "23px");
+		im.setAttribute("height", "23px");
+		im.setAttribute("class", "icon");
+		im.setAttribute("id", "shieldIco");
 		if(data[i] == null)
 		{
 			par.innerHTML = "<b> Your Results: </b>" + "Not Found" ;
-			im.setAttribute("src", "../images/index/WarningShield.png");
+			if(mode == 0){
+				im.setAttribute("src", "../images/index/WarningShield.png");
+			} else if(mode == 1){
+				im.setAttribute("src", "../images/index/WarningShield_Dark.png");
+			} else {
+				im.setAttribute("src", "../images/index/WarningShield.png");
+			}
+
 		}
 
 		else
 		{
 			par.innerHTML = "<b> Your Results: </b>" + data[i];
-			im.setAttribute("src", "../images/index/NotWarningShield.png");
+			if(mode == 0) {
+				im.setAttribute("src", "../images/index/NotWarningShield.png");
+			} else if(mode == 1){
+				im.setAttribute("src", "../images/index/NotWarningShield_Dark.png");
+			} else {
+				im.setAttribute("src", "../images/index/NotWarningShield.png");
+			}
+
 		}
 		drops[i].appendChild(div);
 		div.appendChild(im);
@@ -163,6 +181,7 @@ export function loadDocument(url, numberOfSecurityHeaders, data, triangleInfo)
 	let showRecButton = document.getElementById("showRec");
 	let showRecOptButton = document.getElementById("showRecOpt");
     let validateButton = document.getElementById("showGoodVal");
+    let modeButton = document.getElementById("showDarkMode");
 
 	if(downLoadButton){
 		downLoadButton.addEventListener("mouseover", () =>
@@ -194,6 +213,7 @@ export function loadDocument(url, numberOfSecurityHeaders, data, triangleInfo)
 	if(showRecButton) showRecButton.addEventListener("click", () => showRecommended(showRecButton));
 	if(showRecOptButton) showRecOptButton.addEventListener("click", () => setOptional(showRecOptButton));
 	if(validateButton) validateButton.addEventListener("click", () => validate(validateButton));
+	if(modeButton) modeButton.addEventListener("click", () => darkMode(modeButton));
 
 	createAnimations(numberOfSecurityHeaders, data, triangleInfo);
 }
@@ -337,12 +357,15 @@ export function settings()
 	let settingsPage = document.getElementById("settingsPage");
 	let mainPage = document.getElementById("allHeaders");
 	let mainTitle = document.getElementById("mainTitle");
+	let modeTester = document.getElementById("modeTester");
 
 	if(!settingsPage.style.display || settingsPage.style.display === "none")
 	{
 		settingsPage.style.display = "block";
 		mainPage.style.display = "none";
 		mainTitle.innerText = "Settings";
+		modeTester.style.display = "block";
+
 	}
 
 	else
@@ -350,6 +373,7 @@ export function settings()
 		settingsPage.style.display = "none";
 		mainPage.style.display = "block";
 		mainTitle.innerText = "Security Header Test";
+		modeTester.style.display = "none";
 	}
 }
 
@@ -366,6 +390,20 @@ export function setOptional(checkBox)
 export function validate(checkBox)
 {
 	setDisplayBasedOnChecked(checkBox, document.getElementsByClassName("validate"));
+}
+
+export function darkMode(checkBox) {
+	if(mode == 1) {
+		mode = 0;
+		localStorage.setItem("modeVal", mode);
+	} else {
+		mode = 1
+		localStorage.setItem("modeVal", mode);
+	}
+	let modeTester = document.getElementById("modeTester");
+	modeTester.innerText = "Mode: " + mode + ".";
+
+	location.reload();
 }
 
 export function setDisplayBasedOnChecked(checkBox, items)
