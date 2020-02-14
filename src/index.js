@@ -137,14 +137,26 @@ export function setImages(numberOfSecurityHeaders, data)
 
 		if(data[i] === null)
 		{
-			img.src = "../images/index/redX.png";
+			if(mode == 0) {
+				img.src = "../images/index/redX.png";
+			} else if(mode == 1) {
+				img.src = "../images/index/redX_Dark.png";
+			} else {
+				img.src = "../images/index/redX.png";
+			}
 			img.style.width = "20px";
 			img.style.padding = "2px 0px 0px 2px";
 		}
 
 		else
 		{
-			img.src = "../images/index/greenCheck.png";
+			if(mode == 0) {
+				img.src = "../images/index/greenCheck.png";
+			} else if(mode == 1) {
+				img.src = "../images/index/greenCheck_Dark.png";
+			} else {
+				img.src = "../images/index/greenCheck.png";
+			}
 			img.style.padding = "0px 0px 0px 0px";
 		}
 	}
@@ -183,7 +195,23 @@ export function loadDocument(url, numberOfSecurityHeaders, data, triangleInfo)
     let validateButton = document.getElementById("showGoodVal");
     let modeButton = document.getElementById("showDarkMode");
 
-	if(downLoadButton){
+	if(downLoadButton && mode == 0){
+		downLoadButton.addEventListener("mouseover", () =>
+			document.getElementById("downloadIcon").src = "../images/index/download-folder.gif"
+		);
+		downLoadButton.addEventListener("mouseout", () =>
+			document.getElementById("downloadIcon").src = "../images/index/download-folder.png"
+		);
+		downLoadButton.addEventListener("click", () => downloadResults(url, data));
+	} else if(downLoadButton && mode != 0) {
+		downLoadButton.addEventListener("mouseover", () =>
+			document.getElementById("downloadIcon").src = "../images/index/download-folder_Dark.gif"
+		);
+		downLoadButton.addEventListener("mouseout", () =>
+			document.getElementById("downloadIcon").src = "../images/index/download-folder_Dark.png"
+		);
+		downLoadButton.addEventListener("click", () => downloadResults(url, data));
+	} else {
 		downLoadButton.addEventListener("mouseover", () =>
 			document.getElementById("downloadIcon").src = "../images/index/download-folder.gif"
 		);
@@ -192,7 +220,25 @@ export function loadDocument(url, numberOfSecurityHeaders, data, triangleInfo)
 		);
 		downLoadButton.addEventListener("click", () => downloadResults(url, data));
 	}
-	if(learnMoreButton){
+
+
+	if(learnMoreButton && mode == 0){
+		learnMoreButton.addEventListener("mouseover", () =>
+			document.getElementById("lmIcon").src = "../images/index/circles-menu-3.gif"
+		);
+		learnMoreButton.addEventListener("mouseout", () =>
+			document.getElementById("lmIcon").src = "../images/index/circles-menu-3.png"
+		);
+		learnMoreButton.addEventListener("click", learnMore);
+	} else if (learnMoreButton && mode != 0) {
+		learnMoreButton.addEventListener("mouseover", () =>
+			document.getElementById("lmIcon").src = "../images/index/circles-menu-3_Dark.gif"
+		);
+		learnMoreButton.addEventListener("mouseout", () =>
+			document.getElementById("lmIcon").src = "../images/index/circles-menu-3_Dark.png"
+		);
+		learnMoreButton.addEventListener("click", learnMore);
+	} else {
 		learnMoreButton.addEventListener("mouseover", () =>
 			document.getElementById("lmIcon").src = "../images/index/circles-menu-3.gif"
 		);
@@ -201,7 +247,25 @@ export function loadDocument(url, numberOfSecurityHeaders, data, triangleInfo)
 		);
 		learnMoreButton.addEventListener("click", learnMore);
 	}
-	if(settingsButton) {
+
+
+	if(settingsButton && mode == 0) {
+		settingsButton.addEventListener("mouseover", () =>
+			document.getElementById("settingsIcon").src = "../images/index/settings.gif"
+		);
+		settingsButton.addEventListener("mouseout", () =>
+			document.getElementById("settingsIcon").src = "../images/index/settings.png"
+		);
+		settingsButton.addEventListener("click", settings);
+	} else if(settingsButton && mode != 0) {
+		settingsButton.addEventListener("mouseover", () =>
+			document.getElementById("settingsIcon").src = "../images/index/settings_Dark.gif"
+		);
+		settingsButton.addEventListener("mouseout", () =>
+			document.getElementById("settingsIcon").src = "../images/index/settings_Dark.png"
+		);
+		settingsButton.addEventListener("click", settings);
+	} else {
 		settingsButton.addEventListener("mouseover", () =>
 			document.getElementById("settingsIcon").src = "../images/index/settings.gif"
 		);
@@ -210,6 +274,7 @@ export function loadDocument(url, numberOfSecurityHeaders, data, triangleInfo)
 		);
 		settingsButton.addEventListener("click", settings);
 	}
+
 	if(showRecButton) showRecButton.addEventListener("click", () => showRecommended(showRecButton));
 	if(showRecOptButton) showRecOptButton.addEventListener("click", () => setOptional(showRecOptButton));
 	if(validateButton) validateButton.addEventListener("click", () => validate(validateButton));
