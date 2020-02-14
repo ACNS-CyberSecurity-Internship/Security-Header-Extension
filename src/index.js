@@ -24,6 +24,7 @@ export function main()
 					{
 						let numberOfTriangles = numberOfSecurityHeaders + numberOfSettingsDropDowns;
 						loadDocument(url, numberOfTriangles, data, new Array(numberOfTriangles));
+						darkModeCSS();
 					}
 				});
 		}
@@ -76,7 +77,13 @@ export function setLoading(numberOfSecurityHeaders)
 		let img = document.createElement("IMG");
 		img.setAttribute("id", ("img" + i));
 		img.setAttribute("class", "headerVisual");
-		img.src = "../images/index/loading.gif";
+		if (mode == 0) {
+			img.src = "../images/index/loading.gif";
+		} else if (mode == 1) {
+			img.src = "../images/index/loading_Dark.gif";
+		} else {
+			img.src = "../images/index/loading.gif";
+		}
 		img.style.width = "25px";
 		img.style.padding = "0px 0px 5px 0px";
 		images[i].appendChild(img);
@@ -457,7 +464,7 @@ export function validate(checkBox)
 	setDisplayBasedOnChecked(checkBox, document.getElementsByClassName("validate"));
 }
 
-export function darkMode(checkBox) {
+export function darkMode() {
 	if(mode == 1) {
 		mode = 0;
 		localStorage.setItem("modeVal", mode);
@@ -467,9 +474,61 @@ export function darkMode(checkBox) {
 	}
 	let modeTester = document.getElementById("modeTester");
 	modeTester.innerText = "Mode: " + mode + ".";
-
 	location.reload();
 }
+
+
+export function darkModeCSS() {
+	let titles = document.querySelectorAll(".title");
+	let buttons = document.querySelectorAll(".button");
+	let bodys = document.querySelectorAll("body");
+	let triangles = document.querySelectorAll(".triangle");
+	let icons = document.querySelectorAll(".icon");
+	let buttonImages = document.querySelectorAll(".buttonImage");
+
+	if(mode == 1) {
+
+		for(let i = 0; i < titles.length; i++) {
+			titles[i].style.color = "white";
+		}
+
+		for(let i = 0; i < buttons.length; i++) {
+			buttons[i].style.color = "white";
+			buttons[i].style.backgroundColor = "black";
+		}
+
+		for(let i = 0; i < bodys.length; i++) {
+			bodys[i].style.color = "white";
+			bodys[i].style.backgroundColor = "black";
+		}
+
+		for(let i = 0; i < triangles.length; i++) {
+			triangles[i].src = "../images/index/triangle_Dark.png"
+		}
+
+		for(let i = 0; i < icons.length; i++) {
+			if(icons[i].src.indexOf("images/index/icky.png") != -1) {
+				icons[i].src = "../images/index/icky_Dark.png"
+			} else if (icons[i].src.indexOf("images/index/Certified.png") != -1) {
+				icons[i].src = "../images/index/Certified_Dark.png"
+			} else if (icons[i].src.indexOf("images/index/Optimal.png") != -1) {
+				icons[i].src =  "../images/index/Optimal_Dark.png"
+			}
+		}
+
+		for(let i = 0; i < buttons.length; i++) {
+			if(buttonImages[i].src.indexOf("images/index/download-folder.png") != -1) {
+				buttonImages[i].src = "../images/index/download-folder_Dark.png"
+			} else if (buttonImages[i].src.indexOf("images/index/circles-menu-3.png") != -1) {
+				buttonImages[i].src = "../images/index/circles-menu-3_Dark.png"
+			} else if (buttonImages[i].src.indexOf("images/index/settings.png") != -1) {
+				buttonImages[i].src =  "../images/index/settings_Dark.png"
+			}
+		}
+
+	}
+}
+
 
 export function setDisplayBasedOnChecked(checkBox, items)
 {
