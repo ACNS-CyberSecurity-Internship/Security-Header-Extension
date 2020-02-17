@@ -3,8 +3,13 @@ import css from "./main.scss";
 window.addEventListener("DOMContentLoaded", main);
 
 let mode = 0;
+let showRecs = 0;
+let optimizations = 0;
+let showRecOpts = 1;
 mode = localStorage.getItem("modeVal");
-//showRec = localStorage.getItem("showRec");
+showRecs = localStorage.getItem("recs");
+showRecOpts = localStorage.getItem("recOpts");
+optimizations = localStorage.getItem("ops");
 
 export function main()
 {
@@ -26,6 +31,34 @@ export function main()
 						let numberOfTriangles = numberOfSecurityHeaders + numberOfSettingsDropDowns;
 						loadDocument(url, numberOfTriangles, data, new Array(numberOfTriangles));
 						darkModeCSS();
+						let showRecButton = document.getElementById("showRec");
+						let showRecOptButton = document.getElementById("showRecOpt");
+						let validateButton = document.getElementById("showGoodVal");
+						let modeButton = document.getElementById("showDarkMode");
+						if(showRecs == 1) {
+							showRecButton.checked = true;
+						} else {
+							showRecButton.checked = false;
+						}
+
+						if(optimizations == 1) {
+							validateButton.checked = true;
+						} else {
+							validateButton.checked = false;
+						}
+
+						if(showRecOpts == 1) {
+							showRecOptButton.checked = true;
+						} else {
+							showRecOptButton.checked = false;
+						}
+
+						if(mode == 1) {
+							modeButton.checked = true;
+						} else {
+							modeButton.checked = false;
+						}
+
 					}
 				});
 		}
@@ -288,6 +321,10 @@ export function loadDocument(url, numberOfSecurityHeaders, data, triangleInfo)
 	if(validateButton) validateButton.addEventListener("click", () => validate(validateButton));
 	if(modeButton) modeButton.addEventListener("click", () => darkMode(modeButton));
 
+	setDisplayBasedOnVal(showRecs, document.getElementsByClassName("csuRec"));
+	setDisplayBasedOnVal(optimizations, document.getElementsByClassName("validate"));
+	setDisplayBasedOnVal(showRecOpts, document.getElementsByClassName("optional"));
+
 	createAnimations(numberOfSecurityHeaders, data, triangleInfo);
 }
 
@@ -430,14 +467,12 @@ export function settings()
 	let settingsPage = document.getElementById("settingsPage");
 	let mainPage = document.getElementById("allHeaders");
 	let mainTitle = document.getElementById("mainTitle");
-	let modeTester = document.getElementById("modeTester");
 
 	if(!settingsPage.style.display || settingsPage.style.display === "none")
 	{
 		settingsPage.style.display = "block";
 		mainPage.style.display = "none";
 		mainTitle.innerText = "Settings";
-		modeTester.style.display = "block";
 
 	}
 
@@ -446,23 +481,41 @@ export function settings()
 		settingsPage.style.display = "none";
 		mainPage.style.display = "block";
 		mainTitle.innerText = "Security Header Test";
-		modeTester.style.display = "none";
 	}
 }
 
 export function showRecommended(checkBox)
 {
-	setDisplayBasedOnChecked(checkBox, document.getElementsByClassName("csuRec"));
+	if(showRecs == 0) {
+		showRecs = 1;
+	} else {
+		showRecs = 0;
+	}
+	localStorage.setItem("recs", showRecs);
+	setDisplayBasedOnVal(showRecs, document.getElementsByClassName("csuRec"))
+	//setDisplayBasedOnChecked(checkBox, document.getElementsByClassName("csuRec"));
 }
 
 export function setOptional(checkBox)
 {
-	setDisplayBasedOnChecked(checkBox, document.getElementsByClassName("optional"));
+	if(showRecOpts == 0) {
+		showRecOpts = 1;
+	} else {
+		showRecOpts = 0;
+	}
+	localStorage.setItem("recOpts", showRecOpts);
+	setDisplayBasedOnVal(showRecOpts, document.getElementsByClassName("optional"));
 }
 
 export function validate(checkBox)
 {
-	setDisplayBasedOnChecked(checkBox, document.getElementsByClassName("validate"));
+	if(optimizations == 0) {
+		optimizations = 1;
+	} else {
+		optimizations = 0;
+	}
+	localStorage.setItem("ops", optimizations);
+	setDisplayBasedOnVal(optimizations, document.getElementsByClassName("validate"));
 }
 
 export function darkMode() {
@@ -473,8 +526,6 @@ export function darkMode() {
 		mode = 1
 		localStorage.setItem("modeVal", mode);
 	}
-	let modeTester = document.getElementById("modeTester");
-	modeTester.innerText = "Mode: " + mode + ".";
 	location.reload();
 }
 
@@ -553,6 +604,19 @@ export function setDisplayBasedOnChecked(checkBox, items)
 	}
 }
 
+export function setDisplayBasedOnVal(val, items)
+{
+	if (val == 1)
+	{
+		setDisplay(items, "block");
+	}
+
+	else
+	{
+		setDisplay(items, "none");
+	}
+}
+
 export function setDisplay(items, displayType)
 {
 	for(let i = 0; i < items.length; i++)
@@ -560,4 +624,5 @@ export function setDisplay(items, displayType)
 		items[i].style.display = displayType;
 	}
 }
+
 
