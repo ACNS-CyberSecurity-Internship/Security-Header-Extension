@@ -4,6 +4,7 @@ window.addEventListener("DOMContentLoaded", main);
 
 let mode = 0;
 mode = localStorage.getItem("modeVal");
+//showRec = localStorage.getItem("showRec");
 
 export function main()
 {
@@ -485,16 +486,17 @@ export function darkModeCSS() {
 	let triangles = document.querySelectorAll(".triangle");
 	let icons = document.querySelectorAll(".icon");
 	let buttonImages = document.querySelectorAll(".buttonImage");
+	let checkmarks = document.querySelectorAll(".checkmark");
+	let containers = document.querySelectorAll(".container");
 
 	if(mode == 1) {
 
 		for(let i = 0; i < titles.length; i++) {
-			titles[i].style.color = "white";
+			titles[i].className = "title_Dark"
 		}
 
 		for(let i = 0; i < buttons.length; i++) {
-			buttons[i].style.color = "white";
-			buttons[i].style.backgroundColor = "black";
+			buttons[i].className = "button_Dark";
 		}
 
 		for(let i = 0; i < bodys.length; i++) {
@@ -507,23 +509,31 @@ export function darkModeCSS() {
 		}
 
 		for(let i = 0; i < icons.length; i++) {
-			if(icons[i].src.indexOf("images/index/icky.png") != -1) {
+			if(icons[i].src.indexOf("images/index/icky.png") !== -1) {
 				icons[i].src = "../images/index/icky_Dark.png"
-			} else if (icons[i].src.indexOf("images/index/Certified.png") != -1) {
+			} else if (icons[i].src.indexOf("images/index/Certified.png") !== -1) {
 				icons[i].src = "../images/index/Certified_Dark.png"
-			} else if (icons[i].src.indexOf("images/index/Optimal.png") != -1) {
+			} else if (icons[i].src.indexOf("images/index/Optimal.png") !== -1) {
 				icons[i].src =  "../images/index/Optimal_Dark.png"
 			}
 		}
 
-		for(let i = 0; i < buttons.length; i++) {
-			if(buttonImages[i].src.indexOf("images/index/download-folder.png") != -1) {
+		for(let i = 0; i < buttonImages.length; i++) {
+			if(buttonImages[i].src.indexOf("images/index/download-folder.png") !== -1) {
 				buttonImages[i].src = "../images/index/download-folder_Dark.png"
-			} else if (buttonImages[i].src.indexOf("images/index/circles-menu-3.png") != -1) {
+			} else if (buttonImages[i].src.indexOf("images/index/circles-menu-3.png") !== -1) {
 				buttonImages[i].src = "../images/index/circles-menu-3_Dark.png"
-			} else if (buttonImages[i].src.indexOf("images/index/settings.png") != -1) {
+			} else if (buttonImages[i].src.indexOf("images/index/settings.png") !== -1) {
 				buttonImages[i].src =  "../images/index/settings_Dark.png"
 			}
+		}
+
+		for(let i = 0; i < containers.length; i++) {
+			containers[i].className = "container_Dark"
+		}
+
+		for(let i = 0; i < checkmarks.length; i++) {
+			checkmarks[i].className = "checkmark_Dark"
 		}
 
 	}

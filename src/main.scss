@@ -24,6 +24,12 @@ body {
   color: black;
 }
 
+.title_Dark {
+  float: left;
+  width: 200px;
+  color: white;
+}
+
 .image {
   float: left;
   width: 50px;
@@ -33,11 +39,26 @@ body {
 .button {
   font-size: 12px;
   transition-duration: 0.4s;
-  background-color: #ffffffff; /* Green */
+  background-color: #ffffffff;
   border-radius: 6px;
   color: #000000;
   margin-right: 8px;
   margin-left: 8px;
+}
+
+.button_Dark {
+  font-size: 12px;
+  transition-duration: 0.4s;
+  background-color: #000000;
+  border-radius: 6px;
+  color: #ffffff;
+  margin-right: 8px;
+  margin-left: 8px;
+}
+
+.button_Dark:hover {
+  background-color: #0a0a0a;
+  color: #000000;
 }
 
 .button:hover {
@@ -135,6 +156,67 @@ body {
 
 /* Style the checkmark/indicator */
 .container .checkmark:after {
+  left: 5px;
+  top: 1px;
+  width: 2.5px;
+  height: 7px;
+  border: solid white;
+  border-width: 0 3px 3px 0;
+  -webkit-transform: rotate(45deg);
+  -ms-transform: rotate(45deg);
+  transform: rotate(45deg);
+}
+
+
+
+
+/*Dark Mode CheckMark*/
+.container_Dark {
+  display: block;
+  position: relative;
+  padding-left: 35px;
+  margin-bottom: 12px;
+  cursor: pointer;
+  font-size: 13.5px;
+  user-select: none;
+}
+
+.container_Dark input {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+  height: 0;
+  width: 0;
+}
+
+.checkmark_Dark {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 15px;
+  width: 15px;
+  background-color: #292929;
+}
+
+.container_Dark:hover input ~ .checkmark_Dark {
+  background-color: #3f3f3f;
+}
+
+.container_Dark input:checked ~ .checkmark_Dark {
+  background-color: #fe80c0;
+}
+
+.checkmark_Dark:after {
+  content: "";
+  position: absolute;
+  display: none;
+}
+
+.container_Dark input:checked ~ .checkmark_Dark:after {
+  display: block;
+}
+
+.container_Dark .checkmark_Dark:after {
   left: 5px;
   top: 1px;
   width: 2.5px;
