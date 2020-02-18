@@ -1,5 +1,9 @@
 {
   "name": "security-header-extension",
+  "jest": {
+    "verbose": true,
+    "testURL": "http://localhost/"
+  },
   "version": "4.0.0",
   "description": "A Chrome Extension Built to Check the Presence of Embedded Security Headers",
   "main": "index.js",
@@ -20,7 +24,8 @@
   "license": "ISC",
   "dependencies": {
     "@babel/preset-env": "^7.8.3",
-    "express": "^4.17.1"
+    "express": "^4.17.1",
+    "jest": "^25.1.0"
   },
   "devDependencies": {
     "@babel/cli": "^7.7.4",
