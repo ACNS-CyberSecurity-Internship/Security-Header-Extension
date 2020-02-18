@@ -468,13 +468,12 @@ export function validate(checkBox)
 export function darkMode() {
 	if(mode == 1) {
 		mode = 0;
-		localStorage.setItem("modeVal", mode);
 	} else {
 		mode = 1
+	}
+	if(window.localStorage) {
 		localStorage.setItem("modeVal", mode);
 	}
-	let modeTester = document.getElementById("modeTester");
-	modeTester.innerText = "Mode: " + mode + ".";
 	location.reload();
 }
 
