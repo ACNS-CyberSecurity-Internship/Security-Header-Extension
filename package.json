@@ -1,7 +1,8 @@
 {
   "name": "security-header-extension",
   "jest": {
-    "verbose": true
+    "verbose": true,
+    "testURL": "http://localhost/"
   },
   "version": "4.0.0",
   "description": "A Chrome Extension Built to Check the Presence of Embedded Security Headers",
