@@ -2,13 +2,6 @@ import css from "./main.scss";
 
 window.addEventListener("DOMContentLoaded", main);
 
-let mode = 0;
-if(window.localStorage) {
-	// localStorage can be used
-	mode = localStorage.getItem("modeVal");
-}
-//showRec = localStorage.getItem("showRec");
-
 export function main()
 {
 	if(window)
@@ -23,6 +16,7 @@ export function main()
 					let numberOfSecurityHeaders = 9;
 					let numberOfSettingsDropDowns = 3;
 					let data = dataCollection(url, numberOfSecurityHeaders);
+					getSettings();
 
 					if(document)
 					{
@@ -561,4 +555,14 @@ export function setDisplay(items, displayType)
 	{
 		items[i].style.display = displayType;
 	}
+}
+
+export function getSettings() {
+	try {
+		localStorage = window.localStorage;
+	} catch(e) {
+		// Access denied :-(
+	}
+	let mode = 0;
+	mode = localStorage.getItem("modeVal");
 }
