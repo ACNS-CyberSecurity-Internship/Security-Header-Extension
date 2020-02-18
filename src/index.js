@@ -3,7 +3,12 @@ import css from "./main.scss";
 window.addEventListener("DOMContentLoaded", main);
 
 let mode = 0;
-mode = localStorage.getItem("modeVal");
+if(window.localStorage) {
+	// localStorage can be used
+	mode = localStorage.getItem("modeVal");
+} else {
+	// can't be used
+}
 //showRec = localStorage.getItem("showRec");
 
 export function main()
@@ -473,6 +478,8 @@ export function darkMode() {
 	}
 	if(window.localStorage) {
 		localStorage.setItem("modeVal", mode);
+	} else {
+		throw error
 	}
 	location.reload();
 }
