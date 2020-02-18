@@ -3,7 +3,6 @@ import css from "./main.scss";
 window.addEventListener("DOMContentLoaded", main);
 
 let mode = 0;
-getLocalSettings();
 
 export function main()
 {
@@ -15,17 +14,18 @@ export function main()
 
 				function(tabs)
 				{
+					getLocalSettings();
 					let url = tabs[0].url;
 					let numberOfSecurityHeaders = 9;
 					let numberOfSettingsDropDowns = 3;
 					let data = dataCollection(url, numberOfSecurityHeaders);
-
+					darkModeCSS();
 
 					if(document)
 					{
 						let numberOfTriangles = numberOfSecurityHeaders + numberOfSettingsDropDowns;
 						loadDocument(url, numberOfTriangles, data, new Array(numberOfTriangles));
-						darkModeCSS();
+
 					}
 				});
 		}
@@ -78,10 +78,12 @@ export function setLoading(numberOfSecurityHeaders)
 		let img = document.createElement("IMG");
 		img.setAttribute("id", ("img" + i));
 		img.setAttribute("class", "headerVisual");
-		if (mode == 0) {
-			img.src = "../images/index/loading.gif";
-		} else if (mode == 1) {
-			img.src = "../images/index/loading_Dark.gif";
+		if (mode == 1) {
+			img.setAttribute("src", "../images/index/loading_Dark.gif");
+		} else if(mode == 0){
+			img.setAttribute("src", "../images/index/loading.gif");
+		} else {
+			img.setAttribute("src", "../images/index/loading.gif");
 		}
 		img.style.width = "25px";
 		img.style.padding = "0px 0px 5px 0px";
@@ -490,52 +492,50 @@ export function darkModeCSS() {
 	let containers = document.querySelectorAll(".container");
 
 	if(mode == 1) {
-
-		for(let i = 0; i < titles.length; i++) {
+		for (let i = 0; i < titles.length; i++) {
 			titles[i].className = "title_Dark"
 		}
 
-		for(let i = 0; i < buttons.length; i++) {
+		for (let i = 0; i < buttons.length; i++) {
 			buttons[i].className = "button_Dark";
 		}
 
-		for(let i = 0; i < bodys.length; i++) {
+		for (let i = 0; i < bodys.length; i++) {
 			bodys[i].style.color = "white";
 			bodys[i].style.backgroundColor = "black";
 		}
 
-		for(let i = 0; i < triangles.length; i++) {
+		for (let i = 0; i < triangles.length; i++) {
 			triangles[i].src = "../images/index/triangle_Dark.png"
 		}
 
-		for(let i = 0; i < icons.length; i++) {
-			if(icons[i].src.indexOf("images/index/icky.png") !== -1) {
-				icons[i].src = "../images/index/icky_Dark.png"
+		for (let i = 0; i < icons.length; i++) {
+			if (icons[i].src.indexOf("images/index/icky.png") !== -1) {
+				icons[i].src = "../images/index/icky_Dark.png";
 			} else if (icons[i].src.indexOf("images/index/Certified.png") !== -1) {
-				icons[i].src = "../images/index/Certified_Dark.png"
+				icons[i].src = "../images/index/Certified_Dark.png";
 			} else if (icons[i].src.indexOf("images/index/Optimal.png") !== -1) {
-				icons[i].src =  "../images/index/Optimal_Dark.png"
+				icons[i].src = "../images/index/Optimal_Dark.png";
 			}
 		}
 
-		for(let i = 0; i < buttonImages.length; i++) {
-			if(buttonImages[i].src.indexOf("images/index/download-folder.png") !== -1) {
-				buttonImages[i].src = "../images/index/download-folder_Dark.png"
+		for (let i = 0; i < buttonImages.length; i++) {
+			if (buttonImages[i].src.indexOf("images/index/download-folder.png") !== -1) {
+				buttonImages[i].src = "../images/index/download-folder_Dark.png";
 			} else if (buttonImages[i].src.indexOf("images/index/circles-menu-3.png") !== -1) {
-				buttonImages[i].src = "../images/index/circles-menu-3_Dark.png"
+				buttonImages[i].src = "../images/index/circles-menu-3_Dark.png";
 			} else if (buttonImages[i].src.indexOf("images/index/settings.png") !== -1) {
-				buttonImages[i].src =  "../images/index/settings_Dark.png"
+				buttonImages[i].src = "../images/index/settings_Dark.png";
 			}
 		}
 
-		for(let i = 0; i < containers.length; i++) {
-			containers[i].className = "container_Dark"
+		for (let i = 0; i < containers.length; i++) {
+			containers[i].className = "container_Dark";
 		}
 
-		for(let i = 0; i < checkmarks.length; i++) {
-			checkmarks[i].className = "checkmark_Dark"
+		for (let i = 0; i < checkmarks.length; i++) {
+			checkmarks[i].className = "checkmark_Dark";
 		}
-
 	}
 }
 
