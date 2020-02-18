@@ -3,6 +3,7 @@ import css from "./main.scss";
 window.addEventListener("DOMContentLoaded", main);
 
 let mode = 0;
+getLocalSettings();
 
 export function main()
 {
@@ -18,7 +19,7 @@ export function main()
 					let numberOfSecurityHeaders = 9;
 					let numberOfSettingsDropDowns = 3;
 					let data = dataCollection(url, numberOfSecurityHeaders);
-					getLocalSettings();
+
 
 					if(document)
 					{
@@ -81,8 +82,6 @@ export function setLoading(numberOfSecurityHeaders)
 			img.src = "../images/index/loading.gif";
 		} else if (mode == 1) {
 			img.src = "../images/index/loading_Dark.gif";
-		} else {
-			img.src = "../images/index/loading.gif";
 		}
 		img.style.width = "25px";
 		img.style.padding = "0px 0px 5px 0px";
