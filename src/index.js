@@ -2,6 +2,8 @@ import css from "./main.scss";
 
 window.addEventListener("DOMContentLoaded", main);
 
+let mode = 0;
+
 export function main()
 {
 	if(window)
@@ -16,7 +18,7 @@ export function main()
 					let numberOfSecurityHeaders = 9;
 					let numberOfSettingsDropDowns = 3;
 					let data = dataCollection(url, numberOfSecurityHeaders);
-					getSettings();
+					getLocalSettings();
 
 					if(document)
 					{
@@ -468,9 +470,12 @@ export function darkMode() {
 	} else {
 		mode = 1
 	}
-	if(window.localStorage) {
-		localStorage.setItem("modeVal", mode);
+	try {
+		localStorage = window.localStorage;
+	} catch(e) {
+		// Access denied :-(
 	}
+	localStorage.setItem("modeVal", mode);
 	location.reload();
 }
 
@@ -557,12 +562,11 @@ export function setDisplay(items, displayType)
 	}
 }
 
-export function getSettings() {
+export function getLocalSettings() {
 	try {
 		localStorage = window.localStorage;
 	} catch(e) {
 		// Access denied :-(
 	}
-	let mode = 0;
 	mode = localStorage.getItem("modeVal");
 }
