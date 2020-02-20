@@ -203,7 +203,7 @@ export function loadDocument(url, numberOfSecurityHeaders, data, triangleInfo)
     let validateButton = document.getElementById("showGoodVal");
     let modeButton = document.getElementById("showDarkMode");
 
-	if(downLoadButton && mode == 0){
+	if(downLoadButton && mode != 1){
 		downLoadButton.addEventListener("mouseover", () =>
 			document.getElementById("downloadIcon").src = "../images/index/download-folder.gif"
 		);
@@ -211,7 +211,7 @@ export function loadDocument(url, numberOfSecurityHeaders, data, triangleInfo)
 			document.getElementById("downloadIcon").src = "../images/index/download-folder.png"
 		);
 		downLoadButton.addEventListener("click", () => downloadResults(url, data));
-	} else if(downLoadButton && mode != 0) {
+	} else if(downLoadButton && mode == 1) {
 		downLoadButton.addEventListener("mouseover", () =>
 			document.getElementById("downloadIcon").src = "../images/index/download-folder_Dark.gif"
 		);
@@ -230,7 +230,7 @@ export function loadDocument(url, numberOfSecurityHeaders, data, triangleInfo)
 	}
 
 
-	if(learnMoreButton && mode == 0){
+	if(learnMoreButton && mode != 1){
 		learnMoreButton.addEventListener("mouseover", () =>
 			document.getElementById("lmIcon").src = "../images/index/circles-menu-3.gif"
 		);
@@ -238,7 +238,7 @@ export function loadDocument(url, numberOfSecurityHeaders, data, triangleInfo)
 			document.getElementById("lmIcon").src = "../images/index/circles-menu-3.png"
 		);
 		learnMoreButton.addEventListener("click", learnMore);
-	} else if (learnMoreButton && mode != 0) {
+	} else if (learnMoreButton && mode == 1) {
 		learnMoreButton.addEventListener("mouseover", () =>
 			document.getElementById("lmIcon").src = "../images/index/circles-menu-3_Dark.gif"
 		);
@@ -257,7 +257,7 @@ export function loadDocument(url, numberOfSecurityHeaders, data, triangleInfo)
 	}
 
 
-	if(settingsButton && mode == 0) {
+	if(settingsButton && mode != 1) {
 		settingsButton.addEventListener("mouseover", () =>
 			document.getElementById("settingsIcon").src = "../images/index/settings.gif"
 		);
@@ -265,7 +265,7 @@ export function loadDocument(url, numberOfSecurityHeaders, data, triangleInfo)
 			document.getElementById("settingsIcon").src = "../images/index/settings.png"
 		);
 		settingsButton.addEventListener("click", settings);
-	} else if(settingsButton && mode != 0) {
+	} else if(settingsButton && mode == 1) {
 		settingsButton.addEventListener("mouseover", () =>
 			document.getElementById("settingsIcon").src = "../images/index/settings_Dark.gif"
 		);
