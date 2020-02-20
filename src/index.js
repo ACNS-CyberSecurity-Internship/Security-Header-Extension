@@ -5,7 +5,7 @@ window.addEventListener("DOMContentLoaded", main);
 let mode = 0;
 let recommendations = 0;
 let optimizations = 0;
-let optHeaders = 1;
+let optHeaders = 0;
 
 export function main()
 {
