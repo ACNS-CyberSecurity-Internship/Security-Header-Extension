@@ -17,7 +17,6 @@ export function main()
 
 				function(tabs)
 				{
-					setLocalSettings();
 					getLocalSettings();
 					let url = tabs[0].url;
 					let numberOfSecurityHeaders = 9;
