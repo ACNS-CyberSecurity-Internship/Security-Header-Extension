@@ -17,6 +17,7 @@ export function main()
 
 				function(tabs)
 				{
+					setLocalSettings();
 					getLocalSettings();
 					let url = tabs[0].url;
 					let numberOfSecurityHeaders = 9;
@@ -652,4 +653,16 @@ export function getLocalSettings() {
 	recommendations = localStorage.getItem("recs");
 	optimizations = localStorage.getItem("opts");
 	optHeaders = localStorage.getItem("optHead");
+}
+
+export function setLocalSettings() {
+	try {
+		localStorage = window.localStorage;
+	} catch(e) {
+		// Access denied :-(
+	}
+	mode = localStorage.setItem("modeVal", mode);
+	recommendations = localStorage.setItem("recs", recommendations);
+	optimizations = localStorage.setItem("opts", optimizations);
+	optHeaders = localStorage.setItem("optHead", optHeaders);
 }
