@@ -3,6 +3,9 @@ import css from "./main.scss";
 window.addEventListener("DOMContentLoaded", main);
 
 let mode = 0;
+let csuRecommendations = 0;
+let optHeaders = 0;
+let optimizations = 0;
 
 export function main()
 {
@@ -25,6 +28,35 @@ export function main()
 					{
 						let numberOfTriangles = numberOfSecurityHeaders + numberOfSettingsDropDowns;
 						loadDocument(url, numberOfTriangles, data, new Array(numberOfTriangles));
+
+						let recommendationButton = document.getElementById("showRec");
+						let optionalHeaderButton = document.getElementById("showRecOpt");
+						let optimizationsButton = document.getElementById("showGoodVal");
+						let modeButton = document.getElementById("showDarkMode");
+
+						if(mode != 1) {
+							modeButton.checked = false;
+						} else {
+							modeButton.checked = true;
+						}
+
+						if(csuRecommendations != 1) {
+							recommendationButton.checked = false;
+						} else {
+							recommendationButton.checked = true;
+						}
+
+						if(optimizations != 1) {
+							optimizationsButton.checked = false;
+						} else {
+							optimizationsButton.checked = true;
+						}
+
+						if(optHeaders != 1) {
+							optionalHeaderButton.checked = false;
+						} else {
+							optionalHeaderButton.checked = true;
+						}
 
 					}
 				});
@@ -288,6 +320,10 @@ export function loadDocument(url, numberOfSecurityHeaders, data, triangleInfo)
 	if(validateButton) validateButton.addEventListener("click", () => validate(validateButton));
 	if(modeButton) modeButton.addEventListener("click", () => darkMode(modeButton));
 
+	setDisplayBasedOnSettingsVal(csuRecommendations, document.getElementsByClassName("csuRec"));
+	setDisplayBasedOnSettingsVal(optHeaders, document.getElementsByClassName("optional"));
+	setDisplayBasedOnSettingsVal(optimizations, document.getElementsByClassName("validate"));
+
 	createAnimations(numberOfSecurityHeaders, data, triangleInfo);
 }
 
@@ -430,14 +466,12 @@ export function settings()
 	let settingsPage = document.getElementById("settingsPage");
 	let mainPage = document.getElementById("allHeaders");
 	let mainTitle = document.getElementById("mainTitle");
-	let modeTester = document.getElementById("modeTester");
 
 	if(!settingsPage.style.display || settingsPage.style.display === "none")
 	{
 		settingsPage.style.display = "block";
 		mainPage.style.display = "none";
 		mainTitle.innerText = "Settings";
-		modeTester.style.display = "block";
 
 	}
 
@@ -446,23 +480,55 @@ export function settings()
 		settingsPage.style.display = "none";
 		mainPage.style.display = "block";
 		mainTitle.innerText = "Security Header Test";
-		modeTester.style.display = "none";
 	}
 }
 
 export function showRecommended(checkBox)
 {
-	setDisplayBasedOnChecked(checkBox, document.getElementsByClassName("csuRec"));
+	if(csuRecommendations != 1) {
+		csuRecommendations = 1;
+	} else if (csuRecommendations == 1) {
+		csuRecommendations = 0;
+	}
+	try {
+		localStorage = window.localStorage;
+	} catch(e) {
+		// Access denied :-(
+	}
+	localStorage.setItem("csuRecommendations", csuRecommendations);
+	setDisplayBasedOnSettingsVal(csuRecommendations, document.getElementsByClassName("csuRec"));
 }
 
 export function setOptional(checkBox)
 {
-	setDisplayBasedOnChecked(checkBox, document.getElementsByClassName("optional"));
+	if(optHeaders != 1) {
+		optHeaders = 1;
+	} else if (optHeaders == 1) {
+		optHeaders = 0;
+	}
+	try {
+		localStorage = window.localStorage;
+	} catch(e) {
+		// Access denied :-(
+	}
+	localStorage.setItem("optionalHeaders", optHeaders);
+	setDisplayBasedOnSettingsVal(optHeaders, document.getElementsByClassName("optional"));
 }
 
 export function validate(checkBox)
 {
-	setDisplayBasedOnChecked(checkBox, document.getElementsByClassName("validate"));
+	if(optimizations != 1) {
+		optimizations = 1;
+	} else if (optimizations == 1) {
+		optimizations = 0;
+	}
+	try {
+		localStorage = window.localStorage;
+	} catch(e) {
+		// Access denied :-(
+	}
+	localStorage.setItem("optimizations", optimizations);
+	setDisplayBasedOnSettingsVal(optimizations, document.getElementsByClassName("validate"));
 }
 
 export function darkMode() {
@@ -553,6 +619,19 @@ export function setDisplayBasedOnChecked(checkBox, items)
 	}
 }
 
+export function setDisplayBasedOnSettingsVal(value, items)
+{
+	if (value == 1)
+	{
+		setDisplay(items, "block");
+	}
+
+	else
+	{
+		setDisplay(items, "none");
+	}
+}
+
 export function setDisplay(items, displayType)
 {
 	for(let i = 0; i < items.length; i++)
@@ -568,4 +647,7 @@ export function getLocalSettings() {
 		// Access denied :-(
 	}
 	mode = localStorage.getItem("modeVal");
+	csuRecommendations = localStorage.getItem("csuRecommendations");
+	optimizations = localStorage.getItem("optimizations");
+	optHeaders = localStorage.getItem("optionalHeaders");
 }
