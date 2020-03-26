@@ -1,7 +1,7 @@
 {
   "name": "Security-Header-Extension",
   "description": "A Chrome Extension built to check the presence of embedded security headers.",
-  "version": "5.0",
+  "version": "6.0",
   "browser_action": {
     "default_title": "Security-Header-Extension",
     "default_popup": "index.html",
