@@ -1,4 +1,13 @@
+# Idea Files
+
+.idea/workspace.xml
+
+# Node Files
+
 /node_modules
-/dist
 /package-lock.json
-/.idea
+
+# Output Files
+
+/dist
+/out
