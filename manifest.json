@@ -17,7 +17,6 @@
   },
   "permissions": [
     "tabs",
-    "clipboardWrite",
     "http://*/*",
     "https://*/*"
   ]
