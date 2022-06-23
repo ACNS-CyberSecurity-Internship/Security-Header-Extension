@@ -4,7 +4,7 @@
     "verbose": true,
     "testURL": "http://localhost/"
   },
-  "version": "4.0.0",
+  "version": "6.0.0",
   "description": "A Chrome Extension Built to Check the Presence of Embedded Security Headers",
   "main": "index.js",
   "scripts": {
